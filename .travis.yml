@@ -1,8 +1,14 @@
 ---
 language: java
+services:
+  - docker
+sudo: required
 
 jobs:
   include:
     - stage: Build with standalone Maven
       script:
         - mvn clean install
+    - stage: Build Docker Image
+      script:
+        - ./script/build-helloworld-docker-image.sh
